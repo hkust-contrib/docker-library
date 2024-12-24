@@ -16,6 +16,11 @@ build {
       only       = ["docker.actions-runner"]
     }
 
-    post-processor "docker-push" {}
+    post-processor "docker-push" {
+      login          = true
+      login_server   = var.registry
+      login_username = var.registry_username
+      login_password = var.registry_password
+    }
   }
 }
