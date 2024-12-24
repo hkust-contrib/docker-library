@@ -1,9 +1,9 @@
 data "http" "supplychain" {
-	url = "https://artifact.narwhl.dev/upstream/current.json"
+  url = "https://artifact.narwhl.dev/upstream/current.json"
 }
 
 locals {
-	packages = jsondecode(data.http.supplychain.body).syspkgs
+  packages = jsondecode(data.http.supplychain.body).syspkgs
 }
 
 build {
