@@ -18,14 +18,14 @@ fi
 
 cd /home/runner/actions-runner
 
-./config.sh --url ${URL} --token ${REG_TOKEN}
+./config.sh --url ${URL} --token ${REG_TOKEN} --ephemeral
 
-cleanup() {
-    echo "Removing runner..."
-    ./config.sh remove --unattended --token ${REG_TOKEN}
-}
+# cleanup() {
+#     echo "Removing runner..."
+#     ./config.sh remove --unattended --token ${REG_TOKEN}
+# }
 
-trap 'cleanup; exit 130' INT
-trap 'cleanup; exit 143' TERM
+# trap 'cleanup; exit 130' INT
+# trap 'cleanup; exit 143' TERM
 
 ./run.sh & wait $!
