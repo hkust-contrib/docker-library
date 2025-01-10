@@ -16,6 +16,8 @@ RUN apt-get update \
     zstd \
     && apt-get clean \
     && rm -r /var/lib/apt/lists/*
+COPY start.sh start.sh
+RUN chmod +x start.sh
 
 USER runner
 ENTRYPOINT ["./start.sh"]
