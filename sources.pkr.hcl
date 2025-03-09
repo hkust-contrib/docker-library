@@ -8,3 +8,13 @@ source "docker" "actions-runner" {
   }
   commit = true
 }
+
+source "docker" "caddy" {
+  build {
+    path      = "${path.root}/templates/caddy/Dockerfile"
+    build_dir = "${path.root}/templates/caddy"
+    arguments = {
+      "CADDY_VERSION" = local.packages["caddy"].version
+    }
+  }
+}

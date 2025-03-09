@@ -7,13 +7,19 @@ locals {
 }
 
 build {
-  sources = ["source.docker.actions-runner"]
+  sources = [
+    "source.docker.actions-runner",
+    "source.docker.caddy"
+  ]
 
   post-processors {
     post-processor "docker-tag" {
       repository = "${var.registry}/${var.registry_namespace}/${source.name}"
-      tags       = ["latest", local.packages["actions-runner"].version]
-      only       = ["docker.actions-runner"]
+      tags       = ["latest", local.packages[source.name].version]
+      only       = [
+        "docker.actions-runner",
+        "docker.caddy"
+      ]
     }
 
     post-processor "docker-push" {
