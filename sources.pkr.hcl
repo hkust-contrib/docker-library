@@ -17,4 +17,5 @@ source "docker" "caddy" {
       "CADDY_VERSION" = local.packages["caddy"].version
     }
   }
+  commit = true
 }
